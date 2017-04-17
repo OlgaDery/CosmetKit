@@ -23,9 +23,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import domain.Food;
-import domain.FoodList;
-import domain.FoodManager;
+
 
 /**
  * @author Olga
@@ -42,48 +40,48 @@ public class FoodRestService {
 	private UriInfo uriInfo;
 
 	
-	@POST
-	public Response create (Food f) 
-	{
-		if (f == null)
-			throw new BadRequestException();
-		FoodManager.add(f);
-		URI uri = uriInfo.getAbsolutePathBuilder().path(f.getName()).build();
-		return Response.created(uri).build();
-		
-	}
+//	@POST
+//	public Response create (Food f) 
+//	{
+//		if (f == null)
+//			throw new BadRequestException();
+//		FoodManager.add(f);
+//		URI uri = uriInfo.getAbsolutePathBuilder().path(f.getName()).build();
+//		return Response.created(uri).build();
+//		
+//	}
 	
-	@PUT
-	public Response update (Food f) 
-	{
-		return Response.ok().build();
-	}
+//	@PUT
+//	public Response update (Food f) 
+//	{
+//		return Response.ok().build();
+//	}
+//	
+//	@GET
+//	@Path ("{name}")
+//	public Response get (@PathParam ("name") String name ) 
+//	{
+//		Food food = FoodManager.findFood(name);
+//		if (food == null)
+//			throw new NotFoundException();
+//		return Response.ok(food).build();
+//		
+//	}
 	
 	@GET
-	@Path ("{name}")
-	public Response get (@PathParam ("name") String name ) 
-	{
-		Food food = FoodManager.findFood(name);
-		if (food == null)
-			throw new NotFoundException();
-		return Response.ok(food).build();
+	//public Response getAll () 
+	//{
+	//	FoodList fdLst = FoodManager.getFoods();
+	//	GenericEntity<List<Food>> list = new GenericEntity <List<Food>>(fdLst){};
+	//	return Response.ok(list).build();
 		
-	}
-	
-	@GET
-	public Response getAll () 
-	{
-		FoodList fdLst = FoodManager.getFoods();
-		GenericEntity<List<Food>> list = new GenericEntity <List<Food>>(fdLst){};
-		return Response.ok(list).build();
-		
-	}
+	//}
 	
 	@DELETE
 	@Path ("{name}")
 	public Response remove (@PathParam ("name") String name) 
 	{
-		FoodManager.delete(name);
+	//	FoodManager.delete(name);
 		return Response.noContent().build();
 		
 	}
