@@ -9,17 +9,18 @@ import java.util.Map;
 
 /**
  * @author Olga
- *
+ * Class Serum implements Item interface. It contains the inherited methods 
+ * and one specific for the class.
  */
 public class Serum implements Item {
 	
 	private String name;
 	private String target;
-	private Map<String, Long> components;// = new HashMap <String, Long>();
+	private Map<String, Long> components;
 	private boolean beforeSleep;
 	
 	
-
+//this constructor initialize the necessary fields
 	public Serum(String name, String target) {
 		super();
 		this.name = name;
@@ -27,11 +28,10 @@ public class Serum implements Item {
 		this.beforeSleep = false;
 	}
 	
+	//the empty constructor may be important for some JavaEE functionality as Java Beans
 	public Serum () {
 		
 	}
-
-	
 
 	/* (non-Javadoc)
 	 * @see domain.Item#getName()
@@ -59,17 +59,22 @@ public class Serum implements Item {
 	{
 		// TODO Auto-generated method stub
 		try {
+			//this is for testing if the map is NULL and NullPointerException is thrown 
 			components.size();
 			return components;
 		} catch (Exception e) {
+			//to prevent NullPointerException in any client class manipulating with the object
 			return new HashMap <String, Long>();
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see domain.Item#getTargetIndex()
+	 */
 	@Override
 	public int getTargetIndex() 
 	{
-		// TODO Auto-generated method stub
+		// to get the index associated to the target
 		int Index = Arrays.asList(ComponentsAndTargets.targets).indexOf(this.target);
 		return Index;
 	}
@@ -106,6 +111,7 @@ public class Serum implements Item {
 	}
 
 	@Override
+	//overriding the Equals method to compare only the classes of objects and names
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

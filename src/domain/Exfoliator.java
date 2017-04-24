@@ -9,17 +9,21 @@ import java.util.Map;
 
 /**
  * @author Olga
- *
+ * Class Exfoliator extends Cleanser class. It contains the inherited methods 
+ * and one returning specific field for the class.
  */
+
 public class Exfoliator extends Cleanser {
 	
 	private String name;
 	private String target;
-	private Integer frequencyPerWeek;
 	private Map<String, Long> components;
 	
+	//field introduced in this class
+	private Integer frequencyPerWeek;
 	
-
+	
+	//this constructor initialize the necessary fields
 	public Exfoliator(String name, String target) {
 		super();
 		this.name = name;
@@ -28,8 +32,7 @@ public class Exfoliator extends Cleanser {
 		
 	}
 	
-	//empty constructor may be necessary 
-	
+	//the empty constructor may be important for some JavaEE functionality as Java Beans
 	public Exfoliator () {
 		
 	}
@@ -57,8 +60,9 @@ public class Exfoliator extends Cleanser {
 	 */
 	@Override
 	public Map<String, Long> getComponents() {
-		// TODO This method is to prevent the nullpointerexception 
-		//throwing if the components have not been set yet
+		// Calling components.size() to test if the map is null. If so, the new map is being
+		//instantiated in the CATCH block. It will prevent the nullpointerexception 
+		//throwing within any client class using the instance of this class.
 		try {
 			components.size();
 			return components;
@@ -70,7 +74,7 @@ public class Exfoliator extends Cleanser {
 	@Override
 	public int getTargetIndex() 
 	{
-		// TODO Auto-generated method stub
+		// to get the index associated to the target
 		int Index = Arrays.asList(ComponentsAndTargets.targets).indexOf(this.target);
 		return Index;
 	}

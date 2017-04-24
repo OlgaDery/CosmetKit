@@ -8,14 +8,21 @@ import java.util.List;
 
 /**
  * @author Olga
- *
+ *This class implements Routine interface. It contains the inherited methods, fields, returning by
+ *these methods, and setters for the fields.
  */
 public class RoutineClass implements Routine 
 {
 	private String name;
 	private String description;
-	private List <Item> items;
 	
+	//This list must contain only 3 Items, which are instances of 3 classes (Serum, Cleanser and Exfoliator),
+	//implementing Item interface. The size and the content of a list is being controlled by the methods
+	//within the client classes responsible for business logic, like EJBs.
+	
+	private List <Item> items;
+
+	//empty constructor
 	public RoutineClass () {
 		
 	}
@@ -35,7 +42,9 @@ public class RoutineClass implements Routine
 	@Override
 	public List<Item> getItems() 
 	{
-		// TODO Auto-generated method stub
+		// Calling components.size() to test if the map is null. If so, the new list is being
+		//instantiated in the CATCH block. It will prevent the nullpointerexception 
+		//throwing within any client class using the instance of this class.
 		try {
 			items.size();
 			return items;

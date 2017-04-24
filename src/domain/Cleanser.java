@@ -6,17 +6,20 @@ package domain;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-
 /**
  * @author Olga
- *
+ * Class Cleanser implements Item interface. It contains the inherited methods 
+ * and one returning specific field for the class.
  */
+
 public class Cleanser implements Item {
 	
 	private String name;
 	private String target;
-	private String format;
 	private Map<String, Long> components;
+	
+	//field specific for this class
+	private String format;
 	
 	
 
@@ -33,7 +36,6 @@ public class Cleanser implements Item {
 		
 	}
 
-	
 
 	/* (non-Javadoc)
 	 * @see domain.Item#getName()
@@ -58,8 +60,9 @@ public class Cleanser implements Item {
 	 */
 	@Override
 	public Map<String, Long> getComponents() {
-		// TODO This method is to prevent the nullpointerexception 
-		//throwing if the components have not been set yet
+		// Calling components.size() to test if the map is null. If so, the new map is being
+		//instantiated in the CATCH block. It will prevent the nullpointerexception 
+		//throwing within any client class using the instance of this class.
 		try {
 			components.size();
 			return components;
